@@ -1,0 +1,35 @@
+Browser Detect 
+This script is best to help your page visitors know if their browser will run specific functionality or files.
+     
+
+Copy and paste this script into your HTML editor:     
+
+<!-- Place this script anywhere on your page. -->
+
+<SCRIPT LANGUAGE = "JavaScript">
+
+var name = navigator.appName;
+var vers = navigator.appVersion;
+vers = vers.substring(0,1); 
+// or 0,4  could return 4.5 instead of just 4
+
+if (name == "Microsoft Internet Explorer")
+{
+// You can edit this message.
+  document.write('You are using Internet Explorer.');
+// If you want to redirect your visitors to a
+// Internet Explorer-friendly version of your
+// page, use this code:
+// window.location=browser_specific_url;
+}
+else
+{
+// You can edit this message.
+  document.write('You are using Netscape.');
+// If you want to redirect your visitors to a
+// Internet Explorer-friendly version of your
+// page, use this code:
+// window.location=browser_specific_url;
+}
+
+</SCRIPT>

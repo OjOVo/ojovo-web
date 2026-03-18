@@ -1,0 +1,19 @@
+Countdown to Date 
+Count down the days 'til your birthday, the year 2000, or when you plan to start saving money.
+     
+
+Follow the editing instructions after the // and within the <!--comment tags--> to customize the script, then copy and paste it into your HTML editor.     
+
+<!--Place this script anywhere in a page.-->
+
+
+<SCRIPT LANGUAGE = "JavaScript">
+var now = new Date();
+// set this value to the countdown date.
+var then = new Date("December 31, 1999");
+var gap = then.getTime() - now.getTime();
+gap = Math.floor(gap / (1000 * 60 * 60 * 24));
+document.write(gap);
+</SCRIPT>
+<!--your message here-->days 'til the year 2000.
+

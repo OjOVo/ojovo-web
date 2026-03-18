@@ -1,0 +1,39 @@
+<html>
+<head>
+<script>
+<!-- START HIDE
+// #############################################################
+// ### GDS SmartScript V.5.0 (C)1998 GD Software
+// ### http://www.danbbs.dk/~duplex
+// ### duplex@mail.danbbs.dk
+// #############################################################
+// Set all needed variables
+var max=0;
+function textlist()
+{
+max=textlist.arguments.length;
+for (i=0; i<max; i++)
+this[i]=textlist.arguments[i];
+}
+tl = new textlist
+(
+"Mais arriba da ría de Arousa e dos montes de Barbanza hai outra ría, e despois, unha costa aberta que termina nunha gran praia semicircular, cuio nome de Carnota tamén significa pedra. Tal nome, ata o século XVIII non era só o da praia e o do actual axuntamento, senón de toda a rexión que vai do Tambre ó Xallas, de Noia á Ézaro. Alí, levántase o Monte Pindo, que dende o mar mírase bermello nos crepúsculos e sempre imponente. O seu nome e o mesmo que o do antigo monte de Apolo en Grecia."
+);
+var x=0; pos=0;
+var l=tl[0].length;
+function textticker()
+{
+document.tickform.tickfield.value=tl[x].substring(0,pos)+"_";
+if(pos++==l) { pos=0; setTimeout("textticker()",1000); x++;
+if(x==max) x=0; l=tl[x].length; } else
+setTimeout("textticker()",100);
+}
+// STOP HIDE -->
+</script>
+</head>
+<body onload="textticker()">
+<form name="tickform">
+<p align="center"><input type="text" name="tickfield" size="40"></p>
+</form>
+</body>
+</html>

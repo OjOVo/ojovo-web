@@ -1,0 +1,30 @@
+Scrolling Status Bar 
+This is very useful if you REALLY want to get that message across.
+
+Follow the editing instructions after the // and within the <!--comment tags--> to customize the script, then copy and paste it into your HTML editor.     
+
+<!--Place this script in the <HEAD> section.-->
+
+<script language="JavaScript">
+
+<!--
+// You may edit the message below.
+var statBarMsg = "This message appears in the status bar ..... " +
+                 "It will repeat continuously while the page is viewed ....." +
+               
+                 "good, right?    " ;
+
+function startStatusScroller()
+{
+    window.status = statBarMsg;
+    statBarMsg = statBarMsg.substring(1, statBarMsg.length) + statBarMsg.substring(0, 1)
+    setTimeout("startStatusScroller()", 150)
+}
+//-->
+</SCRIPT>
+
+
+
+<!--Replace the <BODY> tag.-->
+
+<body onLoad="startStatusScroller();">

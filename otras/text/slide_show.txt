@@ -1,0 +1,63 @@
+Slide Show 
+Put up to nine images on one page without taking up a lot of space - create your own slide show!
+
+Following the editing instructions after the // and within the <!--comment tags--> to customize the 
+script, then copy and paste it into your HTML editor.     
+
+<!--Insert this script anywhere between the <BODY> tags.-->
+
+<form>
+<center>
+<script language="JavaScript">
+<!--
+
+var current = 0;
+
+function imageArray()
+{
+  this.length = imageArray.arguments.length;
+  for (var i = 0; i < this.length; i++)
+  {
+     this[i] = imageArray.arguments[i];
+  }
+}
+// All the images for your slide show need to 
+// be stored in a single directory within 
+// Filemanager, so you may have to do some 
+// rearranging. You can use any group and any 
+// number of images. Place your images within 
+// each set of quotation marks below.
+var imgz = new imageArray("0.gif","1.gif","2.gif","3.gif","4.gif","5.gif","6.gif","7.gif","8.gif","9.gif");
+
+document.write('<img name="myImages" border="1" src="'+imgz[0]+'">');
+
+function getPosition(val)
+{
+  var goodnum = current+val;
+  if (goodnum < 0)
+// This message is displayed if your visitor 
+// tries to click back past your first image.
+// Place your message within the quotation 
+// marks below.
+    alert("You can't go any farther back!");
+
+  else
+    if (goodnum > imgz.length-1)
+// This message is displayed if your visitor 
+// tries to click past your last image. Place 
+// your message within the quotation marks 
+// below.
+      alert("You can't go any farther forward!");
+    else
+      document.myImages.src = imgz[goodnum];
+
+  current = goodnum;
+}
+
+//-->
+</script>
+<br>
+  <input type="button" value="<<" onclick="getPosition(-1)">  
+  <input type="button" value=">>" onclick="getPosition(1)">
+</center>
+</form>

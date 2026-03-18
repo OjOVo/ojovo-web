@@ -1,0 +1,38 @@
+Scrolling Text Box 
+When saying something only once just won't do.
+
+Follow the editing instructions after the // and within the <!--comment tags--> to customize the script, then copy and paste it into your HTML editor.     
+
+<!--Place this script in the <HEAD> section.-->
+
+<script language="JavaScript">
+
+<!--
+// You may edit the message within the 
+// quotation marks.
+var msg = "place your message here - this will scroll repeatedly for the life of the page    ..... ";
+
+function startScroller()
+{
+   document.scrollForm.scrolling_message.value = msg
+   msg = msg.substring(1, msg.length) + msg.substring(0, 1)
+// This editable setting dictates how quickly
+// each character moves across the scroll box
+// (ex. 150=.15 seconds).  
+   setTimeout("startScroller()", 150)
+ 
+}
+//-->
+</SCRIPT>
+
+
+
+<!--Place this script in the <BODY> section.-->
+
+<body onLoad="startScroller();">
+
+<form name="scrollForm">
+  <!--This editable value is the size of the text box. -->
+  <input type="text" name="scrolling_message" value="" size="25">
+
+</form>

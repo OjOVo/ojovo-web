@@ -1,0 +1,66 @@
+Background Fade 
+It's like a drum-roll introducing your page, without any drumming.
+     
+Follow the editing instructions after the // and within the <!--comment tags--> to customize the script, then copy and paste it into your HTML editor.     
+
+<!--Place this anywhere in your HTML, past the <BODY> tag.--> 
+
+
+<script language="javascript">
+<!--
+function makearray(n)
+{
+     this.length = n;
+     for(var i = 1; i <= n; i++) this[i] = 0;
+     return this;
+}
+
+hexArray = new makearray(16);
+
+
+for(var i = 0; i < 10; i++) hexArray[i] = i;
+hexArray[10]="A"; hexArray[11]="B"; hexArray[12]="C";
+hexArray[13]="D"; hexArray[14]="E"; hexArray[15]="F";
+
+function makeHex(i)
+{
+    if (i < 0) return "00";
+
+    else if (i > 255) return "FF";
+
+    else
+      return "" + hexArray[Math.floor(i/16)] + hexArray[i%16];
+}
+
+
+function setbgColor(r, g, b)
+{
+    var red = makeHex(r); var green = makeHex(g); var blue = makeHex(b);
+    document.bgColor = "#"+red+green+blue;
+}
+
+
+function fade(sr, sg, sb, er, eg, eb, inc)
+{
+// keep updating the background color
+    for(var i = 0; i <= inc; i++)
+    {
+        setbgColor(
+             Math.floor(sr * ((inc-i)/inc) + er * (i/inc)),
+             Math.floor(sg * ((inc-i)/inc) + eg * (i/inc)),
+             Math.floor(sb * ((inc-i)/inc) + eb * (i/inc)));
+    }
+}
+
+
+// The first six values are RGB color values,
+// and can be edited. (Ex. 255,255,255=white,
+// 0,0,0=black). The seventh value is a time
+// value, which can also be edited. (Ex.
+// 1000=1 second).
+fade(255,255,255, 0,0,0, 1000);
+
+
+// -->
+</script>
+

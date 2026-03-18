@@ -1,0 +1,68 @@
+Mouse Rollover 
+This script converts an image when the user places the mouse pointer over the image.  
+     
+Follow the editing instructions after the // and within the <!--comment tags--> to customize the 
+script, then copy and paste it into your HTML editor.     
+
+<!--Place this script in the <HEAD> section.-->
+
+<script language="JavaScript">
+
+var n3 = false;
+image1       = new Image();
+// Place your first image within the
+// quotation marks on the line below.
+image1.src   = "mouse_off1.gif";
+image1on     = new Image();
+// Place your second image within the
+// quotation marks on the line below.
+image1on.src = "mouse_on1.gif"
+
+image2       = new Image();
+// Place your first image within the
+// quotation marks on the line below.
+image2.src   = "mouse_off2.gif";
+image2on     = new Image();
+// Place your second image within the
+// quotation marks on the line below.
+image2on.src = "mouse_on2.gif"
+
+function on3(name)
+{
+    document[name].src = eval(name + "on.src");
+}
+
+function off3(name)
+{
+    document[name].src = eval(name + ".src");
+}
+
+n3 = true;
+function on(name)
+{
+   if (n3)
+      on3(name);
+}
+
+function off(name)
+{
+   if (n3)
+      off3(name);
+}
+</script>
+
+
+
+<!--Place this script in the <BODY> section.-->
+
+<!-- Type your URL within the quotation marks below. -->
+<a href="http://www.tripod.com" onmouseover="on('image1');" onmouseout="off('image1')">
+<!--The image name below should correspond with the first image in the <HEAD> section.-->
+  <img src="../mouse_off1.gif" border="0" name="image1"></a>
+
+<br><br>
+
+<!--Type your URL in within the quotation marks below. -->
+<a href="http://www.tripod.com" onmouseover="on('image2');" onmouseout="off('image2')">
+<!--The image name below should correspond with the third image in the <HEAD> section.-->
+  <img src="../mouse_off2.gif" border="0" name="image2"></a>

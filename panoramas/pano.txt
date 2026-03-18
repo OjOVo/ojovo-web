@@ -1,0 +1,159 @@
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 016.jpg
+640 480
+
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0.990659 0.0139649 0.135648 
+-0.0138358 0.999903 -0.00189443 
+-0.135661 1.77628e-008 0.990755 
+
+1363.75
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 017.jpg
+640 480
+
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0.99206 0.0222053 0.123787 
+0.00717505 0.972693 -0.231987 
+-0.125558 0.231033 0.96481 
+
+1334.6
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 018.jpg
+640 480
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0 0 0 
+0 0 0 
+0 0 0 
+
+0
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 019.jpg
+640 480
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0 0 0 
+0 0 0 
+0 0 0 
+
+0
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 020.jpg
+640 480
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0 0 0 
+0 0 0 
+0 0 0 
+
+0
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 021.jpg
+640 480
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0 0 0 
+0 0 0 
+0 0 0 
+
+0
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 022.jpg
+640 480
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0 0 0 
+0 0 0 
+0 0 0 
+
+0
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 023.jpg
+640 480
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0 0 0 
+0 0 0 
+0 0 0 
+
+0
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 024.jpg
+640 480
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0 0 0 
+0 0 0 
+0 0 0 
+
+0
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 025.jpg
+640 480
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0 0 0 
+0 0 0 
+0 0 0 
+
+0
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 026.jpg
+640 480
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0 0 0 
+0 0 0 
+0 0 0 
+
+0
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 027.jpg
+640 480
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0 0 0 
+0 0 0 
+0 0 0 
+
+0
+
+C:\cdweb\OjOdevo\webovo\panoramas\NOV05 015.jpg
+640 480
+
+1 0 239.5 
+0 1 319.5 
+0 0 1 
+
+0.989624 -0.040142 0.137961 
+0.00704857 0.972588 0.23243 
+-0.143509 -0.229046 0.962779 
+
+1370.47
+

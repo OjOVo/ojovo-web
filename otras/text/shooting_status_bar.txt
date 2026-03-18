@@ -1,0 +1,63 @@
+Shooting Status Bar Message 
+It's a bird, it's a plane - it's a shooting status bar message!
+
+Follow the editing instructions after the // and within the <!--comment tags--> to customize the script, then copy and paste it into your HTML editor.     
+
+<!--Place this script in the <head> section.-->
+
+
+<script language="JavaScript">
+<!--
+
+// You may edit the message below.
+var startMsg = "Tripod rocks!    ";
+
+var str     = "";
+var msg     = "";
+var leftMsg = "";
+
+
+function setMessage()
+{
+    if (msg == "")
+    {
+        str = " ";
+        msg = startMsg;
+        leftMsg = "";
+    }
+
+    if (str.length == 1)
+    {
+        while (msg.substring(0, 1) == " ")
+        {
+            leftMsg = leftMsg + str;
+            str = msg.substring(0, 1);
+            msg = msg.substring(1, msg.length);
+        }
+
+        leftMsg = leftMsg + str;
+        str = msg.substring(0, 1);
+        msg = msg.substring(1, msg.length);
+
+        for (var ii = 0; ii < 120; ii++)
+        {
+           str = " " + str;
+        }
+    }
+    else
+        str = str.substring(10, str.length);
+
+    window.status = leftMsg + str;
+// This editable value (1000 = 1 second) 
+// corresponds to the speed of the shooting
+// message.
+    timeout = window.setTimeout('setMessage()',100);
+
+}
+// -->
+</script>
+
+<!--Update the <BODY> tag for the timer function.-->
+
+<!-- You may edit the BODY color. -->
+<BODY bgcolor="ffffff" onload="timeout = window.setTimeout('setMessage()',500);">

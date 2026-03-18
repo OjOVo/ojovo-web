@@ -1,0 +1,53 @@
+Banner Rotation 
+Say more using less space - put your banners on rotation.     
+     
+Follow the editing instructions after the // and within the <!--comment tags--> to customize the script, then copy and paste it into your HTML editor.     
+
+<!--In order for this script to work, you need to name your banner images in the following format: banner#.gif (Ex. banner1.gif, banner2.gif).-->
+
+<!--Add this script to the <HEAD> section of your page.-->
+
+<script language="JavaScript">
+<!--
+
+
+var sponsor = 1;
+
+
+
+function surfToSponsor()
+{
+// Within the quotation marks below, enter
+// the URLs to which your three respective 
+// banners will link.
+   if (sponsor==1) window.location.href="http://www.tripod.com";
+   if (sponsor==2) window.location.href="http://www.lycos.com";
+   if (sponsor==3) window.location.href="http://www.angelfire.com";
+}
+
+
+function changeSponsor()
+{
+// Set the first value to the number of
+// banners (you can have as many banners as
+// you want).
+   if (++sponsor > 3)  sponsor = 1;
+   document.images[0].src = "banner" + sponsor + ".gif";
+// Set this value to the time between 
+// rotations (1500 = 1.5 seconds)
+   window.setTimeout('rotate();',1500);
+
+}
+// -->
+</script>
+
+
+<!--Replace the <BODY> tag and add in the links for the ads.-->
+
+<!-- This value needs to correspond with the -->
+<!-- time value above. You can also edit the -->
+<!-- bgcolor tag. -->
+<body onLoad="window.setTimeout('changeSponsor();',1500);" bgcolor="ffffff">
+
+<a href="javascript:surfToSponsor();">
+<img name="banner" SRC="../banner1.gif"></a>

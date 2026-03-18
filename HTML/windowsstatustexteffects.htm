@@ -1,0 +1,49 @@
+<html>
+<head>
+<script>
+<!-- START HIDE
+// #############################################################
+// ### GDS SmartScript V.5.0 (C)1998 GD Software
+// ### http://www.danbbs.dk/~duplex
+// ### duplex@mail.danbbs.dk
+// #############################################################
+// Set all needed variables
+var curmes = 0
+var a = 0
+var counter = 0
+var message = new Array()
+message[0] = "Mais arriba da ría de Arousa e dos montes de Barbanza hai outra ría, e despois, unha costa aberta que termina nunha gran praia semicircular, cuio nome de Carnota tamén significa pedra. Tal nome, ata o século XVIII non era só o da praia e o do actual axuntamento, senón de toda a rexión que vai do Tambre ó Xallas, de Noia á Ézaro. Alí, levántase o Monte Pindo, que dende o mar mírase bermello nos crepúsculos e sempre imponente. O seu nome e o mesmo que o do antigo monte de Apolo en Grecia."
+var temp = ""
+function typew()
+{
+a = a + 1
+check()
+window.status = message[curmes].substring(0, a)
+if(a == message[curmes].length + 5)
+{
+curmes = curmes + 1
+a = 0
+}
+if(curmes > 0)
+{
+curmes = 0
+}
+counter = setTimeout("typew()", 100)
+}
+function check()
+{
+if(a <= message[curmes].length)
+{
+if(message[curmes].substring(a, a + 1) == "")
+{
+a = a + 1
+check()
+}
+}
+}
+// STOP HIDE -->
+</script>
+</head>
+<body onload=typew()>
+</body>
+</html>
