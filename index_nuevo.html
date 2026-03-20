@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OjOVo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --rojo-vivo: #cc2222;
+    --rojo-suave: #3a0a0a;
+    --texto-menu: #883333;
+  }
+  html, body {
+    background: #0a0000;
+    color: #c8a090;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .marco {
+    border: 1px solid #1a0000;
+    margin: 16px auto;
+    max-width: 1440px;
+    box-shadow: 0 0 60px rgba(80,0,0,0.4);
+  }
+  .cabecera {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #1a0000;
+  }
+  .cabecera img { width: 100%; display: block; }
+  .zona {
+    position: absolute;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+    text-decoration: none;
+  }
+  .zona:hover {
+    border-color: rgba(180,30,30,0.5);
+    background: rgba(100,0,0,0.1);
+  }
+  .zona-label {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #cc3333;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    background: rgba(0,0,0,0.8);
+    padding: 2px 8px;
+    pointer-events: none;
+  }
+  .zona:hover .zona-label { opacity: 1; }
+  .zona-luna  { top: 5%; left: 1%; width: 20%; height: 88%; }
+  .zona-huevo { top: 10%; left: 30%; width: 25%; height: 80%; }
+  .zona-casa  { top: 8%; right: 1%; width: 16%; height: 80%; }
+  .zona-ojovo { top: 5%; right: 18%; width: 16%; height: 22%; }
+  .punto-nav {
+    position: absolute;
+    width: 2.2%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    left: 13.5%;
+  }
+  .punto-nav:hover { transform: scale(1.3); box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+  .punto-nav .zona-label { bottom: -22px; }
+  .punto-nav:hover .zona-label { opacity: 1; }
+  .punto-naranja  { background: #cc5500; top: 21%; }
+  .punto-rojo     { background: #cc1111; top: 30%; }
+  .punto-verde    { background: #336633; top: 39%; }
+  .punto-amarillo { background: #ccaa00; top: 50%; }
+  .punto-azul     { background: #114477; top: 59%; }
+  .cuerpo {
+    display: flex;
+    min-height: 300px;
+    background: #030000;
+  }
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    border-right: 1px solid #1a0000;
+    padding: 24px 0;
+    background: #050000;
+  }
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .sidebar-item:hover { background: rgba(80,0,0,0.3); }
+  .sidebar-punto { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sidebar-texto {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: var(--texto-menu);
+    transition: color 0.2s;
+  }
+  .sidebar-item:hover .sidebar-texto { color: #cc4444; }
+  .sidebar-divider { border: none; border-top: 1px solid #150000; margin: 8px 20px; }
+  .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 30px 40px; }
+  .bienvenida { text-align: center; animation: aparece 2.5s ease forwards; opacity: 0; }
+  @keyframes aparece {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .bienvenida-titulo {
+    font-family: 'IM Fell English', serif;
+    font-size: 11px;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: var(--rojo-vivo);
+    margin-bottom: 20px;
+  }
+  .bienvenida-sep { width: 50px; height: 1px; background: var(--rojo-suave); margin: 0 auto 20px; }
+  .bienvenida-texto { font-size: 14px; line-height: 2; color: #5a3333; font-style: italic; }
+  .pie {
+    border-top: 1px solid #150000;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #020000;
+  }
+  .pie img { height: 34px; opacity: 0.8; }
+  .pie-texto { font-size: 10px; letter-spacing: 3px; color: #2a0f0f; text-transform: uppercase; }
+  @media (max-width: 700px) {
+    .marco { margin: 0; }
+    .cuerpo { flex-direction: column; }
+    .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #1a0000; }
+    .zona-label { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="marco">
+
+  <div class="cabecera">
+    <img src="images/ojodevo.png" alt="OjOVo">
+    <a class="zona zona-luna"  href="index.html"><span class="zona-label">Inicio</span></a>
+    <a class="zona zona-ojovo" href="index.html"><span class="zona-label">OjOVo</span></a>
+    <a class="zona zona-huevo" href="mirada.html"><span class="zona-label">Proyectos</span></a>
+    <a class="zona zona-casa"  href="galerias.html"><span class="zona-label">Galer&iacute;as</span></a>
+  </div>
+
+  <div class="cuerpo">
+    <nav class="sidebar">
+      <a class="sidebar-item" href="mirada.html">
+        <span class="sidebar-punto" style="background:#cc5500;"></span>
+        <span class="sidebar-texto">La Mirada Obliqua &nbsp;SHOW TV</span>
+      </a>
+      <hr class="sidebar-divider">
+      <a class="sidebar-item" href="mostra.html">
+        <span class="sidebar-punto" style="background:#cc1111;"></span>
+        <span class="sidebar-texto">La Mostra</span>
+      </a>
+      <hr class="sidebar-divider">
+      <a class="sidebar-item" href="talleur.html">
+        <span class="sidebar-punto" style="background:#336633;"></span>
+        <span class="sidebar-texto">Talleur de La Literature</span>
+      </a>
+      <hr class="sidebar-divider">
+      <a class="sidebar-item" href="camisetas.html">
+        <span class="sidebar-punto" style="background:#ccaa00;"></span>
+        <span class="sidebar-texto">OjOVo Camisetas</span>
+      </a>
+      <hr class="sidebar-divider">
+      <a class="sidebar-item" href="reservado.html">
+        <span class="sidebar-punto" style="background:#114477;"></span>
+        <span class="sidebar-texto">Pr&oacute;ximamente</span>
+      </a>
+    </nav>
+    <main class="main">
+      <div class="bienvenida">
+        <p class="bienvenida-titulo">O &nbsp; j &nbsp; O &nbsp; V &nbsp; o</p>
+        <div class="bienvenida-sep"></div>
+        <p class="bienvenida-texto">
+          Selecciona una secci&oacute;n en el men&uacute;<br>
+          o explora los elementos de la cabecera.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <footer class="pie">
+    <img src="images/leon.gif" alt="OjOVo">
+    <span class="pie-texto">OjOVo &nbsp;&mdash;&nbsp; todos los derechos reservados</span>
+  </footer>
+
+</div>
+</body>
+</html>
