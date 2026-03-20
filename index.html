@@ -1,81 +1,209 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<title>Para Empezar, Ya Me Est&aacute;s Cargando</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<script language="JavaScript" type="text/JavaScript">
-<!--
-function MM_displayStatusMsg(msgStr) { //v1.0
-  status=msgStr;
-  document.MM_returnValue = true;
-}
-
-function MM_swapImgRestore() { //v3.0
-  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
-}
-
-function MM_preloadImages() { //v3.0
-  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
-    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
-    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
-}
-
-function MM_findObj(n, d) { //v4.01
-  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
-    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
-  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
-  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
-  if(!x && d.getElementById) x=d.getElementById(n); return x;
-}
-
-function MM_swapImage() { //v3.0
-  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
-   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
-}
-//-->
-</script>
-<script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
-<style type="text/css">
-body {overflow:hidden; border: 1px solid; margin:0px #000000;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OjOVo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --rojo-vivo: #cc2222;
+    --rojo-suave: #3a0a0a;
+    --texto-menu: #883333;
+  }
+  html, body {
+    background: #0a0000;
+    color: #c8a090;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .marco {
+    border: 1px solid #1a0000;
+    margin: 16px auto;
+    max-width: 1440px;
+    box-shadow: 0 0 60px rgba(80,0,0,0.4);
+  }
+  .cabecera {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #1a0000;
+  }
+  .cabecera img { width: 100%; display: block; }
+  .zona {
+    position: absolute;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+    text-decoration: none;
+  }
+  .zona:hover {
+    border-color: rgba(180,30,30,0.5);
+    background: rgba(100,0,0,0.1);
+  }
+  .zona-label {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #cc3333;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    background: rgba(0,0,0,0.8);
+    padding: 2px 8px;
+    pointer-events: none;
+  }
+  .zona:hover .zona-label { opacity: 1; }
+  .zona-luna  { top: 5%; left: 1%; width: 20%; height: 88%; }
+  .zona-huevo { top: 10%; left: 30%; width: 25%; height: 80%; }
+  .zona-casa  { top: 8%; right: 1%; width: 16%; height: 80%; }
+  .zona-ojovo { top: 5%; right: 18%; width: 16%; height: 22%; }
+  .punto-nav {
+    position: absolute;
+    width: 2.2%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    left: 13.5%;
+  }
+  .punto-nav:hover { transform: scale(1.3); box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+  .punto-nav .zona-label { bottom: -22px; }
+  .punto-nav:hover .zona-label { opacity: 1; }
+  .punto-naranja  { background: #cc5500; top: 21%; }
+  .punto-rojo     { background: #cc1111; top: 30%; }
+  .punto-verde    { background: #336633; top: 39%; }
+  .punto-amarillo { background: #ccaa00; top: 50%; }
+  .punto-azul     { background: #114477; top: 59%; }
+  .cuerpo {
+    display: flex;
+    min-height: 300px;
+    background: #030000;
+  }
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    border-right: 1px solid #1a0000;
+    padding: 24px 0;
+    background: #050000;
+  }
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .sidebar-item:hover { background: rgba(80,0,0,0.3); }
+  .sidebar-punto { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sidebar-texto {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: var(--texto-menu);
+    transition: color 0.2s;
+  }
+  .sidebar-item:hover .sidebar-texto { color: #cc4444; }
+  .sidebar-divider { border: none; border-top: 1px solid #150000; margin: 8px 20px; }
+  .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 30px 40px; }
+  .bienvenida { text-align: center; animation: aparece 2.5s ease forwards; opacity: 0; }
+  @keyframes aparece {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .bienvenida-titulo {
+    font-family: 'IM Fell English', serif;
+    font-size: 11px;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: var(--rojo-vivo);
+    margin-bottom: 20px;
+  }
+  .bienvenida-sep { width: 50px; height: 1px; background: var(--rojo-suave); margin: 0 auto 20px; }
+  .bienvenida-texto { font-size: 14px; line-height: 2; color: #5a3333; font-style: italic; }
+  .pie {
+    border-top: 1px solid #150000;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #020000;
+  }
+  .pie img { height: 34px; opacity: 0.8; }
+  .pie-texto { font-size: 10px; letter-spacing: 3px; color: #2a0f0f; text-transform: uppercase; }
+  @media (max-width: 700px) {
+    .marco { margin: 0; }
+    .cuerpo { flex-direction: column; }
+    .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #1a0000; }
+    .zona-label { display: none; }
+  }
 </style>
 </head>
+<body>
+<div class="marco">
 
-<body bgcolor="#000000" onLoad="MM_preloadImages('images/index_r14_c19_f2.gif')">
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table width="200" border="1" align="center">
-  <tr>
-    <td><applet code="uPixScreen.class" 
-         name="myPixScreen" width= 720 height= 50 hspace="0" archive="uPixScreen.jar">
-      <param name=url value="casa.jpg">
-      <param name="autoPanSpeed" value="10">
-      <param name="title" value="Playa de Patos">
-    </applet></td>
-  </tr>
-</table>
-<p>&nbsp;</p>
-<table width="18%" border="0" align="center" onMouseOver="MM_displayStatusMsg('ANTES de OVULAR, Te Voy A Introducir...');return document.MM_returnValue">
-  <tr>
-<PANEL SRC="SWF/loader.swf" width="180" height="120">
-    <td><script type="text/javascript">
-AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0','width','180','height','120','src','SWF/loader','quality','high','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','SWF/loader' ); //end AC code
-</script><noscript><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="180" height="120">
-        <param name="movie" value="SWF/loader.swf">
-        <param name="quality" value="high">
-        <embed src="SWF/loader.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="180" height="120"></embed> 
-      </object></noscript> </td>
-  </tr>
-</table>
-<table width="100">
-  <tr>
-    <td width="90"><font color="#FFFFFF"><strong><font color="#FFFFFF"><strong><font color="#FFFFFF"><strong><font color="#FFFFFF"><strong><font color="#FFFFFF"><a href="HTML/preovo.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('index_r14_c19','','images/index_r14_c19_f2.gif',1)"><img src="images/index_r14_c19.gif" alt="YA VAMOS PADENTRO" name="index_r14_c19" width="82" height="56" border="0" align="left"></a></font></strong></font></strong></font></strong></font></strong></font></td>
-  </tr>
-</table>
-<hr>
-<p><a href="preovo.htm"> </a>
-</p><p>&nbsp;</p>
-<p>&nbsp; </p>
+  <div class="cabecera">
+    <img src="images/ojodevo.png" alt="OjOVo">
+    <a class="zona zona-luna"  href="index.html"><span class="zona-label">Inicio</span></a>
+    <a class="zona zona-ojovo" href="index.html"><span class="zona-label">OjOVo</span></a>
+    <a class="zona zona-huevo" href="mirada.html"><span class="zona-label">Proyectos</span></a>
+    <a class="zona zona-casa"  href="galerias.html"><span class="zona-label">Galer&iacute;as</span></a>
+  </div>
+
+  <div class="cuerpo">
+    <nav class="sidebar">
+      <a class="sidebar-item" href="mirada.html">
+        <span class="sidebar-punto" style="background:#cc5500;"></span>
+        <span class="sidebar-texto">La Mirada Obliqua &nbsp;SHOW TV</span>
+      </a>
+      <hr class="sidebar-divider">
+      <a class="sidebar-item" href="mostra.html">
+        <span class="sidebar-punto" style="background:#cc1111;"></span>
+        <span class="sidebar-texto">La Mostra</span>
+      </a>
+      <hr class="sidebar-divider">
+      <a class="sidebar-item" href="talleur.html">
+        <span class="sidebar-punto" style="background:#336633;"></span>
+        <span class="sidebar-texto">Talleur de La Literature</span>
+      </a>
+      <hr class="sidebar-divider">
+      <a class="sidebar-item" href="camisetas.html">
+        <span class="sidebar-punto" style="background:#ccaa00;"></span>
+        <span class="sidebar-texto">OjOVo Camisetas</span>
+      </a>
+      <hr class="sidebar-divider">
+      <a class="sidebar-item" href="reservado.html">
+        <span class="sidebar-punto" style="background:#114477;"></span>
+        <span class="sidebar-texto">Pr&oacute;ximamente</span>
+      </a>
+    </nav>
+    <main class="main">
+      <div class="bienvenida">
+        <p class="bienvenida-titulo">O &nbsp; j &nbsp; O &nbsp; V &nbsp; o</p>
+        <div class="bienvenida-sep"></div>
+        <p class="bienvenida-texto">
+          Selecciona una secci&oacute;n en el men&uacute;<br>
+          o explora los elementos de la cabecera.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <footer class="pie">
+    <img src="images/leon.gif" alt="OjOVo">
+    <span class="pie-texto">OjOVo &nbsp;&mdash;&nbsp; todos los derechos reservados</span>
+  </footer>
+
+</div>
 </body>
 </html>
