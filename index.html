@@ -22,16 +22,23 @@
   .marco {
     border: 1px solid #1a0000;
     margin: 16px auto;
-    max-width: 1440px;
-    box-shadow: 0 0 60px rgba(80,0,0,0.4);
+    width: 720px;
+    box-shadow: 0 0 40px rgba(80,0,0,0.4);
   }
   .cabecera {
     position: relative;
-    width: 100%;
+    width: 720px;
+    height: 250px;
     overflow: hidden;
     border-bottom: 1px solid #1a0000;
   }
-  .cabecera img { width: 100%; display: block; }
+  .cabecera img {
+    width: 720px;
+    height: 250px;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
   .zona {
     position: absolute;
     cursor: pointer;
@@ -45,77 +52,60 @@
   }
   .zona-label {
     position: absolute;
-    bottom: 6px;
+    bottom: 4px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    letter-spacing: 3px;
+    font-size: 10px;
+    letter-spacing: 2px;
     color: #cc3333;
     text-transform: uppercase;
     opacity: 0;
     transition: opacity 0.2s;
     white-space: nowrap;
-    background: rgba(0,0,0,0.8);
-    padding: 2px 8px;
+    background: rgba(0,0,0,0.85);
+    padding: 2px 6px;
     pointer-events: none;
   }
   .zona:hover .zona-label { opacity: 1; }
-  .zona-luna  { top: 5%; left: 1%; width: 20%; height: 88%; }
-  .zona-huevo { top: 10%; left: 30%; width: 25%; height: 80%; }
-  .zona-casa  { top: 8%; right: 1%; width: 16%; height: 80%; }
-  .zona-ojovo { top: 5%; right: 18%; width: 16%; height: 22%; }
-  .punto-nav {
-    position: absolute;
-    width: 2.2%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none;
-    left: 13.5%;
-  }
-  .punto-nav:hover { transform: scale(1.3); box-shadow: 0 0 12px rgba(255,255,255,0.4); }
-  .punto-nav .zona-label { bottom: -22px; }
-  .punto-nav:hover .zona-label { opacity: 1; }
-  .punto-naranja  { background: #cc5500; top: 21%; }
-  .punto-rojo     { background: #cc1111; top: 30%; }
-  .punto-verde    { background: #336633; top: 39%; }
-  .punto-amarillo { background: #ccaa00; top: 50%; }
-  .punto-azul     { background: #114477; top: 59%; }
+  .zona-luna  { left: 0px;   top: 0px;   width: 158px; height: 250px; }
+  .zona-huevo { left: 230px; top: 60px;  width: 185px; height: 180px; }
+  .zona-ojovo { left: 447px; top: 0px;   width: 200px; height: 75px;  }
+  .zona-casa  { left: 578px; top: 75px;  width: 142px; height: 175px; }
   .cuerpo {
     display: flex;
-    min-height: 300px;
+    min-height: 280px;
     background: #030000;
+    width: 720px;
   }
   .sidebar {
-    width: 220px;
+    width: 200px;
     flex-shrink: 0;
     border-right: 1px solid #1a0000;
-    padding: 24px 0;
+    padding: 20px 0;
     background: #050000;
   }
   .sidebar-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 20px;
+    padding: 9px 18px;
     text-decoration: none;
     transition: background 0.2s;
   }
   .sidebar-item:hover { background: rgba(80,0,0,0.3); }
-  .sidebar-punto { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sidebar-punto { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
   .sidebar-texto {
     font-family: 'IM Fell English', serif;
     font-style: italic;
-    font-size: 13px;
-    letter-spacing: 0.5px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
     color: var(--texto-menu);
     transition: color 0.2s;
   }
   .sidebar-item:hover .sidebar-texto { color: #cc4444; }
-  .sidebar-divider { border: none; border-top: 1px solid #150000; margin: 8px 20px; }
-  .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 30px 40px; }
+  .sidebar-divider { border: none; border-top: 1px solid #150000; margin: 6px 18px; }
+  .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
   .bienvenida { text-align: center; animation: aparece 2.5s ease forwards; opacity: 0; }
   @keyframes aparece {
     from { opacity: 0; transform: translateY(8px); }
@@ -123,48 +113,41 @@
   }
   .bienvenida-titulo {
     font-family: 'IM Fell English', serif;
-    font-size: 11px;
-    letter-spacing: 7px;
+    font-size: 10px;
+    letter-spacing: 6px;
     text-transform: uppercase;
     color: var(--rojo-vivo);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
-  .bienvenida-sep { width: 50px; height: 1px; background: var(--rojo-suave); margin: 0 auto 20px; }
-  .bienvenida-texto { font-size: 14px; line-height: 2; color: #5a3333; font-style: italic; }
+  .bienvenida-sep { width: 40px; height: 1px; background: var(--rojo-suave); margin: 0 auto 16px; }
+  .bienvenida-texto { font-size: 13px; line-height: 2; color: #5a3333; font-style: italic; }
   .pie {
     border-top: 1px solid #150000;
-    padding: 10px 24px;
+    padding: 8px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #020000;
+    width: 720px;
   }
-  .pie img { height: 34px; opacity: 0.8; }
-  .pie-texto { font-size: 10px; letter-spacing: 3px; color: #2a0f0f; text-transform: uppercase; }
-  @media (max-width: 700px) {
-    .marco { margin: 0; }
-    .cuerpo { flex-direction: column; }
-    .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #1a0000; }
-    .zona-label { display: none; }
-  }
+  .pie img { height: 30px; opacity: 0.8; }
+  .pie-texto { font-size: 9px; letter-spacing: 3px; color: #2a0f0f; text-transform: uppercase; }
 </style>
 </head>
 <body>
 <div class="marco">
-
   <div class="cabecera">
     <img src="images/ojodevo.png" alt="OjOVo">
     <a class="zona zona-luna"  href="index.html"><span class="zona-label">Inicio</span></a>
-    <a class="zona zona-ojovo" href="index.html"><span class="zona-label">OjOVo</span></a>
     <a class="zona zona-huevo" href="mirada.html"><span class="zona-label">Proyectos</span></a>
+    <a class="zona zona-ojovo" href="index.html"><span class="zona-label">OjOVo</span></a>
     <a class="zona zona-casa"  href="galerias.html"><span class="zona-label">Galer&iacute;as</span></a>
   </div>
-
   <div class="cuerpo">
     <nav class="sidebar">
       <a class="sidebar-item" href="mirada.html">
         <span class="sidebar-punto" style="background:#cc5500;"></span>
-        <span class="sidebar-texto">La Mirada Obliqua &nbsp;SHOW TV</span>
+        <span class="sidebar-texto">La Mirada Obliqua SHOW TV</span>
       </a>
       <hr class="sidebar-divider">
       <a class="sidebar-item" href="mostra.html">
@@ -198,12 +181,10 @@
       </div>
     </main>
   </div>
-
   <footer class="pie">
     <img src="images/leon.gif" alt="OjOVo">
     <span class="pie-texto">OjOVo &nbsp;&mdash;&nbsp; todos los derechos reservados</span>
   </footer>
-
 </div>
 </body>
 </html>
