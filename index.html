@@ -4,187 +4,290 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OjOVo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:wght@300;400;600&display=swap');
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --rojo-vivo: #cc2222;
-    --rojo-suave: #3a0a0a;
-    --texto-menu: #883333;
-  }
-  html, body {
-    background: #0a0000;
-    color: #c8a090;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-    overflow-x: hidden;
-  }
-  .marco {
-    border: 1px solid #1a0000;
-    margin: 0 auto;
-    width: 720px;
-    box-shadow: 0 0 40px rgba(80,0,0,0.4);
-  }
-  .cabecera {
-    position: relative;
-    width: 720px;
-    height: 250px;
-    overflow: hidden;
-    border-bottom: 1px solid #1a0000;
-  }
-  .cabecera img {
-    width: 720px;
-    height: 250px;
-    display: block;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-  }
-  .zona {
-    position: absolute;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: border-color 0.3s, background 0.3s;
-    text-decoration: none;
-  }
-  .zona:hover {
-    border-color: rgba(180,30,30,0.5);
-    background: rgba(100,0,0,0.1);
-  }
-  .zona-label {
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: #cc3333;
-    text-transform: uppercase;
-    opacity: 0;
-    transition: opacity 0.2s;
-    white-space: nowrap;
-    background: rgba(0,0,0,0.85);
-    padding: 2px 6px;
-    pointer-events: none;
-  }
-  .zona:hover .zona-label { opacity: 1; }
-  .zona-luna  { left: 0px;   top: 0px;   width: 158px; height: 250px; }
-  .zona-huevo { left: 230px; top: 60px;  width: 185px; height: 180px; }
-  .zona-ojovo { left: 447px; top: 0px;   width: 200px; height: 75px;  }
-  .zona-casa  { left: 578px; top: 75px;  width: 142px; height: 175px; }
-  .cuerpo {
-    display: flex;
-    min-height: 280px;
-    background: #030000;
-    width: 720px;
-  }
-  .sidebar {
-    width: 200px;
-    flex-shrink: 0;
-    border-right: 1px solid #1a0000;
-    padding: 20px 0;
-    background: #050000;
-  }
-  .sidebar-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 18px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .sidebar-item:hover { background: rgba(80,0,0,0.3); }
-  .sidebar-punto { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  .sidebar-texto {
-    font-family: 'IM Fell English', serif;
-    font-style: italic;
-    font-size: 12px;
-    letter-spacing: 0.3px;
-    color: var(--texto-menu);
-    transition: color 0.2s;
-  }
-  .sidebar-item:hover .sidebar-texto { color: #cc4444; }
-  .sidebar-divider { border: none; border-top: 1px solid #150000; margin: 6px 18px; }
-  .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
-  .bienvenida { text-align: center; animation: aparece 2.5s ease forwards; opacity: 0; }
-  @keyframes aparece {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .bienvenida-titulo {
-    font-family: 'IM Fell English', serif;
-    font-size: 10px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: var(--rojo-vivo);
-    margin-bottom: 16px;
-  }
-  .bienvenida-sep { width: 40px; height: 1px; background: var(--rojo-suave); margin: 0 auto 16px; }
-  .bienvenida-texto { font-size: 13px; line-height: 2; color: #5a3333; font-style: italic; }
-  .pie {
-    border-top: 1px solid #150000;
-    padding: 8px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #020000;
-    width: 720px;
-  }
-  .pie img { height: 30px; opacity: 0.8; }
-  .pie-texto { font-size: 9px; letter-spacing: 3px; color: #2a0f0f; text-transform: uppercase; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:#0c0a08;color:#c4b090;
+  font-family:'Inter',system-ui,sans-serif;
+  font-weight:400;line-height:1.7;
+  min-height:100vh;
+}
+.font-display{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400}
+
+/* vignette */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:40;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(8,6,4,.45) 100%);
+}
+
+/* HERO */
+.hero-wrap{
+  width:100%;display:flex;justify-content:center;
+  padding:36px 24px 0;
+  opacity:0;transition:opacity 1s;
+}
+.hero-wrap.loaded{opacity:1}
+.hero-box{
+  width:100%;max-width:900px;height:34vh;
+  position:relative;overflow:hidden;
+  clip-path:inset(0 0 2px 0);
+}
+.hero-box img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;transition:opacity .7s;
+}
+.hero-box::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to bottom,transparent 60%,rgba(12,10,8,.97) 100%);
+}
+
+/* LAYOUT */
+.layout{
+  display:flex;flex-direction:row;
+  max-width:960px;margin:0 auto;width:100%;
+  padding:36px 40px;gap:56px;
+  opacity:0;transition:opacity 1s .3s;
+}
+.layout.loaded{opacity:1}
+
+/* NAV */
+nav ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+nav li{display:flex;align-items:center;gap:12px}
+.dot{
+  width:10px;height:10px;border-radius:50%;
+  border:none;cursor:pointer;padding:0;flex-shrink:0;
+  transition:all .3s;
+}
+.dot:hover{transform:scale(1.25)}
+.dot.active{transform:scale(1.3)}
+.nav-label{
+  background:none;border:none;cursor:pointer;padding:0;
+  font-size:.75rem;letter-spacing:.04em;text-align:left;
+  color:#706050;font-family:'Inter',sans-serif;
+  transition:color .3s;display:none;
+}
+.nav-label:hover{color:#b09070}
+.nav-label.active{color:#d4b880}
+.show-labels .nav-label{display:block}
+
+/* CONTENT */
+.content{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;text-align:center;
+}
+.logo-img{height:58px;width:auto;opacity:.95;transition:transform .3s}
+.logo-img:hover{transform:scale(1.02)}
+.logo-fallback{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:2.6rem;letter-spacing:.35em;color:#c4a060;font-weight:400;
+}
+.divider{
+  height:1px;width:80px;margin:16px auto 26px;
+  background:linear-gradient(90deg,transparent,rgba(180,150,100,.4),transparent);
+}
+
+/* SECTION CONTENT */
+.section{display:none;width:100%;max-width:520px;text-align:left;animation:fadeIn .5s ease-out}
+.section.active{display:block}
+.section-quote{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  color:#d4b880;font-size:1.55rem;font-style:italic;
+  line-height:1.75;text-align:center;
+}
+.section-title{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:1.55rem;font-style:italic;color:#c4a060;
+  margin-bottom:20px;text-align:center;font-weight:400;letter-spacing:.06em;
+}
+.section-body{
+  color:#c8b8a0;font-size:.88rem;line-height:2.1;
+  white-space:pre-line;font-family:'Inter',sans-serif;
+}
+.galerias-msg{text-align:center}
+.galerias-msg p:first-child{color:#a09070;font-size:.9rem;line-height:1.9;margin-bottom:6px}
+.galerias-msg p:last-child{color:#706050;font-size:.82rem}
+
+/* FOOTER */
+footer{
+  padding:18px 24px;border-top:1px solid #1a1510;text-align:center;
+  position:relative;z-index:10;
+}
+footer p{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  color:#706040;font-size:.82rem;letter-spacing:.1em;font-style:italic;
+}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* scrollbar */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0c0a08}
+::-webkit-scrollbar-thumb{background:#2a2015;border-radius:3px}
+::selection{background:rgba(180,150,100,.2);color:#e8d8b8}
+
+@media(max-width:680px){
+  .layout{flex-direction:column;padding:24px 20px;gap:32px}
+  nav{width:100%}
+  nav ul{flex-direction:row;flex-wrap:wrap;gap:12px}
+  .hero-box{height:22vh}
+}
 </style>
 </head>
 <body>
-<div class="marco">
-  <div class="cabecera">
-    <img src="images/ojodevo.png" alt="OjOVo">
-    <a class="zona zona-luna"  href="index.html"><span class="zona-label">Inicio</span></a>
-    <a class="zona zona-huevo" href="mirada.html"><span class="zona-label">Proyectos</span></a>
-    <a class="zona zona-ojovo" href="index.html"><span class="zona-label">OjOVo</span></a>
-    <a class="zona zona-casa"  href="galerias.html"><span class="zona-label">Galer&iacute;as</span></a>
-  </div>
-  <div class="cuerpo">
-    <nav class="sidebar">
-      <a class="sidebar-item" href="mirada.html">
-        <span class="sidebar-punto" style="background:#cc5500;"></span>
-        <span class="sidebar-texto">La Mirada Obliqua SHOW TV</span>
-      </a>
-      <hr class="sidebar-divider">
-      <a class="sidebar-item" href="mostra.html">
-        <span class="sidebar-punto" style="background:#cc1111;"></span>
-        <span class="sidebar-texto">La Mostra</span>
-      </a>
-      <hr class="sidebar-divider">
-      <a class="sidebar-item" href="talleur.html">
-        <span class="sidebar-punto" style="background:#336633;"></span>
-        <span class="sidebar-texto">Talleur de La Literature</span>
-      </a>
-      <hr class="sidebar-divider">
-      <a class="sidebar-item" href="camisetas.html">
-        <span class="sidebar-punto" style="background:#ccaa00;"></span>
-        <span class="sidebar-texto">OjOVo Camisetas</span>
-      </a>
-      <hr class="sidebar-divider">
-      <a class="sidebar-item" href="reservado.html">
-        <span class="sidebar-punto" style="background:#114477;"></span>
-        <span class="sidebar-texto">Pr&oacute;ximamente</span>
-      </a>
+
+<main style="position:relative;z-index:10;min-height:100vh;display:flex;flex-direction:column">
+
+  <!-- HERO -->
+  <header class="hero-wrap" id="hero-wrap">
+    <div class="hero-box">
+      <img id="hero-img" src="https://ojovo.github.io/ojovo-web/images/ojodevo.png" alt="OjOVo">
+    </div>
+  </header>
+
+  <!-- LAYOUT -->
+  <div class="layout" id="layout">
+
+    <!-- NAV -->
+    <nav style="width:210px;flex-shrink:0" id="nav">
+      <ul>
+        <li><button class="dot active" style="background:#c9a84a" data-id="inicio" title="Inicio"></button><button class="nav-label" data-id="inicio">Inicio</button></li>
+        <li><button class="dot" style="background:#c95a5a" data-id="proyectos" title="Proyectos"></button><button class="nav-label" data-id="proyectos">Proyectos</button></li>
+        <li><button class="dot" style="background:#5ac98a" data-id="ojovo" title="OjOVo"></button><button class="nav-label" data-id="ojovo">OjOVo</button></li>
+        <li><button class="dot" style="background:#c9c94a" data-id="galerias" title="Galerías"></button><button class="nav-label" data-id="galerias">Galerías</button></li>
+        <li><button class="dot" style="background:#5a9bc9" data-id="mirada" title="La Mirada Obliqua"></button><button class="nav-label" data-id="mirada">La Mirada Obliqua SHOW TV</button></li>
+        <li><button class="dot" style="background:#c95a5a" data-id="mostra" title="La Mostra"></button><button class="nav-label" data-id="mostra">La Mostra</button></li>
+        <li><button class="dot" style="background:#5ac98a" data-id="talleur" title="Talleur"></button><button class="nav-label" data-id="talleur">Talleur de La Literature</button></li>
+        <li><button class="dot" style="background:#c9c94a" data-id="camisetas" title="Camisetas"></button><button class="nav-label" data-id="camisetas">OjOVo Camisetas</button></li>
+        <li><button class="dot" style="background:#5a9bc9" data-id="proximamente" title="Próximamente"></button><button class="nav-label" data-id="proximamente">Próximamente</button></li>
+      </ul>
     </nav>
-    <main class="main">
-      <div class="bienvenida">
-        <p class="bienvenida-titulo">O &nbsp; j &nbsp; O &nbsp; V &nbsp; o</p>
-        <div class="bienvenida-sep"></div>
-        <p class="bienvenida-texto">
-          Selecciona una secci&oacute;n en el men&uacute;<br>
-          o explora los elementos de la cabecera.
-        </p>
+
+    <!-- CONTENT -->
+    <section class="content">
+
+      <!-- LOGO -->
+      <div style="margin-bottom:16px">
+        <img class="logo-img" id="logo-img"
+          src="https://ojovo.github.io/ojovo-web/images/logo-new.png"
+          alt="OjOVo"
+          onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='block'">
+        <div id="logo-fallback" class="logo-fallback" style="display:none">OjOVo</div>
       </div>
-    </main>
+
+      <div class="divider"></div>
+
+      <!-- SECTIONS -->
+      <div id="inicio" class="section active">
+        <p class="section-quote">Para empezar, YA ME ESTÁS CARGANDO</p>
+      </div>
+
+      <div id="ojovo" class="section">
+        <p class="section-quote">La Materia Prima del Caos</p>
+      </div>
+
+      <div id="proyectos" class="section">
+        <h2 class="section-title">Proyectos</h2>
+        <p class="section-body">La Carpeta Crola</p>
+      </div>
+
+      <div id="galerias" class="section">
+        <div class="galerias-msg">
+          <p>Selecciona una sección en el menú</p>
+          <p>o explora los elementos de la cabecera.</p>
+        </div>
+      </div>
+
+      <div id="mirada" class="section">
+        <h2 class="section-title">La Mirada Obliqua SHOW TV</h2>
+        <p class="section-body">Un ejercicio de provocación, de humor absurdo a través del lenguaje y los dobles sentidos, ironizando en sketches sobre los límites de la lógica televisiva, donde la fina barrera que existe entre la realidad y la ficción se hace casi imperceptible...
+
+Se ríe de todo, especialmente de la estupidez televisiva y de lo políticamente correcto.
+
+La estética del programa quiere transmitir una tendencia un poco futurista, un poco pop, un poco virtual y un poco rabiosa, es decir, un poco de todo. Su estructura central se basa en el montaje rápido de muchos planos distintos, incluso planos por frase, palabra...
+
+Media hora de duración. Semanal.</p>
+      </div>
+
+      <div id="mostra" class="section">
+        <h2 class="section-title">La Mostra</h2>
+        <p class="section-body">SINÓSIS
+
+En un pueblo marinero un joven charnero decide vender su vieja chupa de cuero. Los acontecimientos se precipitan por un acantilado y es al final cuando aparece triunfante Sean Connery y forra de ostias a nuestro héroe en un claro alegato contra la barbarie. Si, tu ríe, ríe...
+
+"El video-arte de Jean Carlo es un artefacto incomprensible, un pedazo de mierda dentro del variado y rico panorama de video-creación mundial" THE LOS ANGELES CHARLIE.
+
+"Solo sería capaz de abandonar mi profesión de crítico por no tener que tragar mas desechos infectos como esta especie de excremento videográfico del más bajo y deleznable bajito, por favor se lo pido, que tengo una resaca de tres pares de güebos." THE GUARDIAN CHOA</p>
+      </div>
+
+      <div id="talleur" class="section">
+        <h2 class="section-title">Talleur de La Literature</h2>
+        <p class="section-body">Sucedió de repente el último verano. En el Talleur de La Literature de LA FATTORÍA los sueños húmedos se materializaron en prosas y poesías y ahora los ensayos y novelas se ejecutan con imparable rapidez. Un desbordamiento de creatividad e inventiva al servicio de señoras. Si quieres pasar un buen rato entre caballeros andantes y playmates, sheriffs y arlequines, tómate una tila y prepárate para disfrutar de este humilde Teatro Al Aire Libre.</p>
+      </div>
+
+      <div id="camisetas" class="section">
+        <h2 class="section-title">OjOVo Camisetas</h2>
+        <p class="section-body">¿Quieres ver camisetas? ¿Muchas camisetas? ¡Aquí tienes una selección de las 80 mejores de un catálogo de más de 200! De distintos temas: surrealistas, pop-tarta, paisajes, collages, psiko-trumble, frases lapidarias, art-sex, punk eclesiástiko y muchas más... ¡en varios colores!
+
+Házte irresistible por dondequiera que pises y sé la envidia de todo el barrio luciendo estos modelos exclusivos firmados por OjOVo. Para tí que eres rabiosamente animal.</p>
+      </div>
+
+      <div id="proximamente" class="section">
+        <h2 class="section-title">Próximamente</h2>
+        <p class="section-body">Nuevas secciones en desarrollo...</p>
+      </div>
+
+    </section>
   </div>
-  <footer class="pie">
-    <img src="images/leon.gif" alt="OjOVo">
-    <span class="pie-texto">OjOVo &nbsp;&mdash;&nbsp; todos los derechos reservados</span>
-  </footer>
-</div>
+</main>
+
+<footer>
+  <p>OjOVo — todos los derechos reservados</p>
+</footer>
+
+<script>
+var current = 'inicio';
+
+function go(id) {
+  // desactivar anterior
+  document.getElementById(current).classList.remove('active');
+  document.querySelector('.dot[data-id="'+current+'"]').classList.remove('active');
+  document.querySelector('.dot[data-id="'+current+'"]').style.boxShadow = 'none';
+
+  current = id;
+
+  // activar nuevo
+  document.getElementById(current).classList.add('active');
+  var dot = document.querySelector('.dot[data-id="'+current+'"]');
+  dot.classList.add('active');
+  dot.style.boxShadow = '0 0 14px ' + dot.style.background;
+
+  // hero image
+  document.getElementById('hero-img').src = current === 'galerias'
+    ? 'https://ojovo.github.io/ojovo-web/images/todas.jpg'
+    : 'https://ojovo.github.io/ojovo-web/images/ojodevo.png';
+
+  // mostrar labels solo en galerías
+  document.getElementById('nav').classList.toggle('show-labels', current === 'galerias');
+
+  // labels activas
+  document.querySelectorAll('.nav-label').forEach(function(l) {
+    l.classList.toggle('active', l.dataset.id === current);
+  });
+}
+
+// click en dots y labels
+document.querySelectorAll('.dot, .nav-label').forEach(function(btn) {
+  btn.onclick = function() { go(this.dataset.id); };
+});
+
+// entrada suave
+window.onload = function() {
+  document.getElementById('hero-wrap').classList.add('loaded');
+  document.getElementById('layout').classList.add('loaded');
+};
+</script>
 </body>
 </html>
